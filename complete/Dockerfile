@@ -1,7 +1,7 @@
 
 FROM maven:3.8.5-openjdk-17 as build
 COPY . .
-RUN mvn clean package
+RUN --mount=type=cache,target=/root/.m2/repository mvn package
 
 
 FROM openjdk:17.0.2-jdk as runtime
